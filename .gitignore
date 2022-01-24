@@ -1,0 +1,15 @@
+/my-project/node_modules
+/my-project/public/hot
+/my-project/public/storage
+/my-project/storage/*.key
+/my-project/vendor
+/my-project/.env
+/my-project/.env.backup
+/my-project/.phpunit.result.cache
+/my-project/docker-compose.override.yml
+/my-project/Homestead.json
+/my-project/Homestead.yaml
+/my-project/npm-debug.log
+/my-project/yarn-error.log
+/my-project/.idea
+/my-project/.vscode
