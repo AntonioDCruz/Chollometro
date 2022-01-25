@@ -21,8 +21,8 @@
     </header>
 
     <div>
-        <button onclick="window.location.href='{{ routte('CreaChollo') }}'">Crear Chollo</button>
-        <button onclick="window.location.href='{{ routte('EditaChollo') }}'">Editar Chollo</button>
+        <button onclick="window.location.href='{{ route('creaChollo') }}'">Crear Chollo</button>
+        <button onclick="window.location.href='{{ route('editaChollo') }}'">Editar Chollo</button>
     </div>
 
     <main>

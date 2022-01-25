@@ -19,6 +19,14 @@ class PagesController extends Controller
         return view('destacados');
     }
 
+    public function editaChollo() {
+        return view('editaChollo');
+    }
+
+    public function creaChollo() {
+        return view('creaChollo');
+    }
+
     public function crear(Request $request) {
         $cholloNuevo = new Chollo();
     
