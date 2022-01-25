@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::view('/', 'inicio')->name('inicio');
+/*Route::view('/', 'inicio')->name('inicio');
 Route::view('nuevos', 'nuevos')->name('nuevos');
-Route::view('destacados', 'destacados')->name('destacados');
+Route::view('destacados', 'destacados')->name('destacados');*/
+
+Route::get('/', [ PagesController::class, 'inicio' ]);
+Route::get('nuevos', [ PagesController::class, 'nuevos' ]);
+Route::get('destacados', [ PagesController::class, 'destacados' ]);
