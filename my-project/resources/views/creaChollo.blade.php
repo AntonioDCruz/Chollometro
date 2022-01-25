@@ -14,7 +14,7 @@
         <input type="text" name="disponible" placeholder="Disponibilidad del chollo" class="form-control mb-2">
 
         <button class="btn btn-primary btn-block" type="submit">
-        Crear nueva nota
+        Crear nuevo chollo
         </button>
     </form>
 
