@@ -20,6 +20,15 @@
         @yield('titulo')
     </header>
 
+    <div>
+        <button onclick="window.location.href='{{ routte('CreaChollo') }}'">Crear Chollo</button>
+        <button onclick="window.location.href='{{ routte('EditaChollo') }}'">Editar Chollo</button>
+    </div>
+
+    <main>
+        @yield('content')
+    </main>
+
     <footer>
         <p>Antonio David Cruz Alarcón</p>
         <p>©CholloSevero</p>
