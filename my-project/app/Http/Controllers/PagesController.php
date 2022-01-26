@@ -30,6 +30,17 @@ class PagesController extends Controller
     public function crear(Request $request) {
         $cholloNuevo = new Chollo();
     
+        $request -> validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'url' => 'required',
+            'categoria' => 'required',
+            'puntuacion' => 'required',
+            'precio' => 'required',
+            'precio_descuento' => 'required',
+            'disponible' => 'required',
+        ]);
+
         $cholloNuevo -> titulo = $request -> titulo;
         $cholloNuevo -> descripcion = $request -> descripcion;
         $cholloNuevo -> url = $request -> url;
