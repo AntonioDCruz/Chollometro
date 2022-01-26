@@ -28,3 +28,5 @@ Route::get('destacados', [ PagesController::class, 'destacados' ])->name('destac
 Route::get('creaChollo', [ PagesController::class, 'creaChollo' ])->name('creaChollo');
 Route::get('editaChollo', [ PagesController::class, 'editaChollo' ])->name('editaChollo');
 Route::post('chollos', [ PagesController::class, 'crear' ]) -> name('chollos.crear');
+Route::post('editar/{id}', [ PagesController::class, 'editar' ]) -> name('chollos.editar');
+Route::put('editar/{id}', [ PagesController::class, 'actualizar' ]) -> name('chollos.actualizar');
