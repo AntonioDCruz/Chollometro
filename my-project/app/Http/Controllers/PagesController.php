@@ -56,9 +56,9 @@ class PagesController extends Controller
     }
     
     public function editar($id) {
-        $nota = Chollo::findOrFail($id);
+        $chollo = Chollo::findOrFail($id);
       
-        return view('chollos.editar', compact('chollos'));
+        return view('chollos.editar', compact('chollo'));
     }
     
     
@@ -90,4 +90,10 @@ class PagesController extends Controller
       
         return back() -> with('mensaje', 'Nota actualizada');
       }
+
+    public function chollos() {
+        $chollos = Chollo::all();
+      
+        return view('inicio', compact('chollos'));
+    }
 }

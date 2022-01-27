@@ -30,3 +30,4 @@ Route::get('editaChollo', [ PagesController::class, 'editaChollo' ])->name('edit
 Route::post('chollos', [ PagesController::class, 'crear' ]) -> name('chollos.crear');
 Route::post('editar/{id}', [ PagesController::class, 'editar' ]) -> name('chollos.editar');
 Route::put('editar/{id}', [ PagesController::class, 'actualizar' ]) -> name('chollos.actualizar');
+Route::get('inicio', [ PagesController::class, 'chollos' ]);
