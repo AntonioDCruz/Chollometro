@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <button onclick="window.location.href='{{ route('creaChollo') }}'">Crear Chollo</button>
     @if (session('mensaje'))
         <div class="alert alert-success">{{ session('mensaje')}}</div>
     @endif
@@ -13,7 +14,7 @@
                 <div class="border border-dark">
                     <div class="row">
                         <div class="col-4">
-                            <img src="{{ asset('public/img/1-chollo-severo.jpg') }}" alt="">
+                            <!--Imagen -->
                         </div>
                         <div class="col-8">
                             <h2>{{$chollo -> titulo}}</h2>

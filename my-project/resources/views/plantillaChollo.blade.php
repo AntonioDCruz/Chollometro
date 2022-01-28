@@ -19,10 +19,6 @@
         @yield('titulo')
     </header>
 
-    <div>
-        <button onclick="window.location.href='{{ route('creaChollo') }}'">Crear Chollo</button>
-    </div>
-
     <main>
         @yield('content')
     </main>
