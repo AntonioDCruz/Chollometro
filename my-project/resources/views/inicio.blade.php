@@ -5,31 +5,37 @@
 @endsection
 
 @section('content')
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Titulo</th>
-                <th>Descripción</th>
-                <th>URL</th>
-                <th>Categoria</th>
-                <th>Puntuacio</th>
-                <th>Precio</th>
-                <th>Precio Descuento</th>
-                <th>Disponible</th>
-            </tr>
-        </thead>
-
+    @if (session('mensaje'))
+        <div class="alert alert-success">{{ session('mensaje')}}</div>
+    @endif
         @foreach ($chollos as $chollo)
-            <tr>
-                <td>{{$chollo -> titulo}}</td>
-                <td>{{$chollo -> descripcion}}</td>
-                <td>{{$chollo -> url}}</td>
-                <td>{{$chollo -> categoria}}</td>
-                <td>{{$chollo -> puntuacion}}</td>
-                <td>{{$chollo -> precio}}</td>
-                <td>{{$chollo -> precio_descuento}}</td>
-                <td>{{$chollo -> disponible}}</td>
-            </tr>
+        <a href="{{ route('vistaChollo', $chollo) }}" class="btn btn-warning btn-sm">
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{ asset('public/img/1-chollo-severo.jpg') }}" alt="">
+                        </div>
+                        <div class="col-8">
+                            <h2>{{$chollo -> titulo}}</h2>
+                            <p>{{$chollo -> descripcion}}</p>
+                            <p>{{$chollo -> url}}</p>
+                            <span>{{$chollo -> categoria}}</span>
+                            <p>{{$chollo -> puntuacion}}</p>
+                            <p>{{$chollo -> precio}}</p>
+                            <p>{{$chollo -> precio_descuento}}</p>
+                        </div>
+                        <a href="{{ route('editaChollo', $chollo) }}" class="btn btn-warning btn-sm">
+                            Editar
+                        </a>
+                        <form action="{{ route('eliminarChollo', $chollo) }}" method="POST" class="d-inline">
+                            @method('DELETE')
+                            @csrf
+                        
+                            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </a>
         @endforeach
     </table>
 @endsection

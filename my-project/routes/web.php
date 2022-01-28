@@ -22,12 +22,17 @@ use Illuminate\Support\Facades\Route;
 Route::view('nuevos', 'nuevos')->name('nuevos');
 Route::view('destacados', 'destacados')->name('destacados');*/
 
-Route::get('/', [ PagesController::class, 'inicio' ])->name('inicio');
+Route::get('/', [ PagesController::class, 'inicio'])->name('inicio');
 Route::get('nuevos', [ PagesController::class, 'nuevos' ])->name('nuevos');
 Route::get('destacados', [ PagesController::class, 'destacados' ])->name('destacados');
 Route::get('creaChollo', [ PagesController::class, 'creaChollo' ])->name('creaChollo');
-Route::get('editaChollo', [ PagesController::class, 'editaChollo' ])->name('editaChollo');
 Route::post('chollos', [ PagesController::class, 'crear' ]) -> name('chollos.crear');
-Route::post('editar/{id}', [ PagesController::class, 'editar' ]) -> name('chollos.editar');
-Route::put('editar/{id}', [ PagesController::class, 'actualizar' ]) -> name('chollos.actualizar');
-Route::get('inicio', [ PagesController::class, 'chollos' ]);
+
+Route::get('editaChollo/{id}', [ PagesController::class, 'editar' ]) -> name('editaChollo');
+Route::put('editaChollo/{id}', [ PagesController::class, 'actualizar' ]) -> name('actualizarChollo');
+
+Route::delete('eliminarChollo/{id}', [ PagesController::class, 'eliminar' ]) -> name('eliminarChollo');
+
+Route::get('vistaChollo/{id}', [ PagesController::class, 'vistaChollo' ])->name('vistaChollo');
+
+//Route::get('/', [ PagesController::class, 'chollos' ]);

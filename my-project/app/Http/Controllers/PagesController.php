@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function inicio() {
-        return view('inicio');
+        $chollos = Chollo::all();
+        return view('inicio', @compact('chollos'));
     }
 
     public function nuevos() { 
@@ -58,7 +59,7 @@ class PagesController extends Controller
     public function editar($id) {
         $chollo = Chollo::findOrFail($id);
       
-        return view('chollos.editar', compact('chollo'));
+        return view('editaChollo', @compact('chollo'));
     }
     
     
@@ -88,12 +89,25 @@ class PagesController extends Controller
       
         $cholloActualizar -> save();
       
-        return back() -> with('mensaje', 'Nota actualizada');
+        return back() -> with('mensaje', 'Chollo actualizado');
       }
 
     public function chollos() {
         $chollos = Chollo::all();
-      
-        return view('inicio', compact('chollos'));
+        print_r($chollos);
+        return view('inicio', @compact('chollos'));
     }
+
+    public function eliminar($id) {
+        $notaEliminar = Chollo::findOrFail($id);
+        $notaEliminar -> delete();
+      
+        return back() -> with('mensaje', 'Chollo Eliminado');
+      }
+
+    public function vistaChollo($id) {
+        $chollo = Chollo::findOrFail($id);
+      
+        return view('vistaChollo', @compact('chollo'));
+    }  
 }
