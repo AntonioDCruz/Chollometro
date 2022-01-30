@@ -13,11 +13,17 @@ class PagesController extends Controller
     }
 
     public function nuevos() { 
-        return view('nuevos');
+        $chollos = Chollo::select('id','titulo', 'created_at', 'descripcion', 'url', 'categoria', 'puntuacion', 'precio', 'precio_descuento')
+        ->orderBy('created_at','desc')
+        ->get();
+        return view('nuevos', @compact('chollos'));
     }
 
     public function destacados() {
-        return view('destacados');
+        $chollos = Chollo::select('id','titulo', 'created_at', 'descripcion', 'url', 'categoria', 'puntuacion', 'precio', 'precio_descuento')
+        ->orderBy('puntuacion','desc')
+        ->get();
+        return view('destacados', @compact('chollos'));
     }
 
     public function editaChollo() {

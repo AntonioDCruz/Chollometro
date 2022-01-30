@@ -1,0 +1,17 @@
+body{
+    background-color: #E9EAED;
+}
+
+#plantillaNav{
+    background-color: #35373B;
+}
+
+#btnNav, #btnEditar, #btnCrearChollo{
+    background-color: #FF7900;
+    color: white;
+}
+
+footer{
+    background-color: #35373B;
+    color: white;
+}
