@@ -25,3 +25,9 @@ footer{
     color: white;
     width: 100%;
 }
+
+#btnIrCholloInicio{
+    background-color: #FF7900;
+    color: white;
+    width: 20%;
+}

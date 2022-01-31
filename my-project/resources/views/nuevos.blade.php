@@ -18,12 +18,12 @@
                             <img class="" src="{!! asset('img/'.$chollo -> id.'-chollo-severo.jpg') !!}" alt="Imagen Chollo">
                         </div>
                         <div class="col-md-9 ml-auto text-left mt-4 mb-3">
-                            <button class="btn btn-outline-warning btn-primary btn-lg mt-2" disabled>{{$chollo -> puntuacion}}</button>
+                            <button  id="btnPuntuacion" class="btn btn-lg mt-2 mb-2" disabled>{{$chollo -> puntuacion}}</button>
                             <h5>{{$chollo -> titulo}}</h5>
-                            <p class="text-truncate text-secondary">{{$chollo -> descripcion}}</p>
-                            <p>{{$chollo -> url}}</p>
-                            <p>{{$chollo -> categoria}}</p>
                             <span class="text-danger"> <del>{{$chollo -> precio}}</del>€</span>  <span class="text-success">  {{$chollo -> precio_descuento}}€</span>
+                            <p>{{$chollo -> categoria}}</p>
+                            <button id="btnIrCholloInicio" onclick="window.location.href='{{$chollo -> url}}'" class="btn btn-primary btn-lg">Ir al chollo</button>
+                            <p class="text-truncate text-secondary">{{$chollo -> descripcion}}</p>
         </a>
                             <div class="row justify-content-end">
                                 <button id="btnEditar" onclick="window.location.href='{{ route('editaChollo', $chollo) }}'" class="btn btn-sm mr-3">Editar</button>
