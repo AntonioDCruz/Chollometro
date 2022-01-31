@@ -1,3 +1,9 @@
+<?php
+
+$mytime = Carbon\Carbon::now();
+$year = substr($mytime->toDateTimeString(), 0, 4);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +49,7 @@
 
     <footer class="p-2 container-fluid">
         <p class="mt-4">Antonio David Cruz Alarcón</p>
-        <p>©CholloSevero</p>
+        <p>©CholloSevero {{ $year }}</p>
     </footer>
 </body>
 </html>

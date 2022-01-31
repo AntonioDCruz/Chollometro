@@ -6,7 +6,7 @@ body{
     background-color: #35373B;
 }
 
-#btnNav, #btnEditar, #btnCrearChollo{
+#btnNav, #btnEditar, #btnCrearChollo, #btnCrear, #btnPuntuacion{
     background-color: #FF7900;
     color: white;
 }
@@ -14,4 +14,14 @@ body{
 footer{
     background-color: #35373B;
     color: white;
+}
+
+#precio{
+   color: #FF7900;
+}
+
+#btnIrChollo{
+    background-color: #FF7900;
+    color: white;
+    width: 100%;
 }

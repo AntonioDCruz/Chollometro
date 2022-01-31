@@ -1,13 +1,11 @@
 @extends('plantillaChollo')
 
 @section('content')
-  <h2>Editando el chollo {{ $chollo -> id }}</h2>
-
   @if (session('mensaje'))
     <div class="alert alert-success">{{ session('mensaje')}}</div>
   @endif
 
-  <form action="{{ route('actualizarChollo', $chollo -> id) }}" method="POST">
+  <form class="mt-3" action="{{ route('actualizarChollo', $chollo -> id) }}" method="POST">
     @method('PUT') {{-- Necesitamos cambiar al método PUT para editar --}}
     @csrf {{-- Cláusula para obtener un token de formulario al enviarlo --}}
 
@@ -120,6 +118,6 @@
 
     <input type="checkbox" name="disponible" class="form-control mb-2" value="1" {{ old('is_featured') ? 'checked="checked"' : '' }}>
 
-    <button class="btn btn-primary btn-block" type="submit">Guardar cambios</button>
+    <button class="btn btn-primary btn-block" id="btnEditar" type="submit">Guardar cambios</button>
   </form>
 @endsection
