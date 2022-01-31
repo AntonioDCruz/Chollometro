@@ -14,7 +14,7 @@
                             <img class="" src="{!! asset('img/'.$chollo -> id.'-chollo-severo.jpg') !!}" alt="Imagen Chollo">
                         </div>
                         <div class="col-md-9 ml-auto text-left mt-4 mb-3">
-                            <button  id="btnPuntuacion" class="btn btn-lg mt-2" disabled>{{$chollo -> puntuacion}}</button>
+                            <button  id="btnPuntuacion" class="btn btn-lg mt-2 mb-2" disabled>{{$chollo -> puntuacion}}</button>
                             <h5>{{$chollo -> titulo}}</h5>
                             <p class="text-truncate text-secondary">{{$chollo -> descripcion}}</p>
                             <p>{{$chollo -> url}}</p>
