@@ -36,3 +36,6 @@ Route::delete('eliminarChollo/{id}', [ PagesController::class, 'eliminar' ]) -> 
 Route::get('vistaChollo/{id}', [ PagesController::class, 'vistaChollo' ])->name('vistaChollo');
 
 //Route::get('/', [ PagesController::class, 'chollos' ]);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
