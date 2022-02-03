@@ -16,6 +16,10 @@ class PagesController extends Controller
         return view('auth/login');
     }
 
+    public function register() {
+        return view('auth/register');
+    }
+
 
     public function nuevos() { 
         $chollos = Chollo::select('id','titulo', 'created_at', 'descripcion', 'url', 'categoria', 'puntuacion', 'precio', 'precio_descuento')

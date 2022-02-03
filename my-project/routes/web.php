@@ -30,6 +30,7 @@ Route::get('creaChollo', [ PagesController::class, 'creaChollo' ])->name('creaCh
 Route::post('chollos', [ PagesController::class, 'crear' ]) -> name('chollos.crear');
 
 Route::get('login', [ PagesController::class, 'login'])->name('login');
+Route::get('register', [ PagesController::class, 'register'])->name('register');
 //Route::get('editaChollo/{id}', [ PagesController::class, 'editar' ]) -> name('editaChollo')->middleware('auth');
 Route::middleware('auth')->get('editaChollo/{id}', [ PagesController::class, 'editar' ]) -> name('editaChollo');
 Route::put('editaChollo/{id}', [ PagesController::class, 'actualizar' ]) -> name('actualizarChollo');
