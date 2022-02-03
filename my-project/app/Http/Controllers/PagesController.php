@@ -12,6 +12,11 @@ class PagesController extends Controller
         return view('inicio', @compact('chollos'));
     }
 
+    public function login() {
+        return view('auth/login');
+    }
+
+
     public function nuevos() { 
         $chollos = Chollo::select('id','titulo', 'created_at', 'descripcion', 'url', 'categoria', 'puntuacion', 'precio', 'precio_descuento')
         ->orderBy('created_at','desc')
