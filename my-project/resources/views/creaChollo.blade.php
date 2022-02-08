@@ -68,7 +68,7 @@
         <input type="number" name="precio" step="0.01" value="{{ old('precio') }}" placeholder="Precio del chollo" class="form-control mb-2">
         <input type="number" step="0.01" value="{{ old('precio_descuento') }}" name="precio_descuento" placeholder="Precio descuento del chollo" class="form-control mb-2" required >
         <label>Disponible</label>
-        <input type="checkbox" name="disponible" class="form-control mb-2" value="1" {{ old('is_featured') ? 'checked="checked"' : '' }}>
+        <input type="checkbox" name="disponible" class="form-control mb-2" value="1" >
 
         <button id="btnCrear" class="btn btn-primary btn-block" type="submit">
         Crear nuevo chollo

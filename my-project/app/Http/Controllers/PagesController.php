@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chollo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -45,6 +46,7 @@ class PagesController extends Controller
 
     public function crear(Request $request) {
         $cholloNuevo = new Chollo();
+        $usuario = Auth::user()->id;
     
         $request -> validate([
             'titulo' => 'required',
@@ -54,7 +56,7 @@ class PagesController extends Controller
             'puntuacion' => 'required',
             'precio' => 'required',
             'precio_descuento' => 'required',
-            'disponible' => 'required',
+            //'disponible' => 'required',
         ]);
 
         $cholloNuevo -> titulo = $request -> titulo;
@@ -65,7 +67,7 @@ class PagesController extends Controller
         $cholloNuevo -> precio = $request -> precio;
         $cholloNuevo -> precio_descuento = $request -> precio_descuento;
         $cholloNuevo -> disponible = $request -> disponible;
-    
+        $cholloNuevo -> user_id = $usuario;
         $cholloNuevo -> save();
     
         return back() -> with('mensaje', 'Chollo agregado exitósamente');
@@ -88,7 +90,7 @@ class PagesController extends Controller
             'puntuacion' => 'required',
             'precio' => 'required',
             'precio_descuento' => 'required',
-            'disponible' => 'required',
+            //'disponible' => 'required',
         ]);
       
         $cholloActualizar = Chollo::findOrFail($id);
