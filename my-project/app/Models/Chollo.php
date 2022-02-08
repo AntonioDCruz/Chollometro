@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Chollo extends Model
 {
     use HasFactory;
+    public function usuario()
+    {
+      return $this -> belongsTo(User::class);
+    }
 }
