@@ -15,6 +15,8 @@ class CreateCholloCategoriaTable extends Migration
     {
         Schema::create('chollo_categoria', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('chollo_id');
+            $table->unsignedInteger('categoria_id');
             $table->timestamps();
         });
     }
