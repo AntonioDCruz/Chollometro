@@ -20,7 +20,7 @@ use App\Models\Chollo;
                             <button  id="btnPuntuacion" class="btn btn-lg mt-2 mb-2" disabled>{{$chollo -> puntuacion}}</button>
                             <h5>{{$chollo -> titulo}}</h5>
                             <span class="text-danger"> <del>{{$chollo -> precio}}</del>€</span>  <span class="text-success">  {{$chollo -> precio_descuento}}€</span>
-                            <p>{{$chollo -> categoria}}</p>
+                            <p>{{Chollo::find( $chollo -> id ) -> categoria() -> orderBy('nombre') -> get();}}</p>
                             <button id="btnIrCholloInicio" onclick="window.location.href='{{$chollo -> url}}'" class="btn btn-primary btn-lg">Ir al chollo</button>
                             <p class="text-truncate text-secondary">{{$chollo -> descripcion}}</p>
                             <p>Chollo creado por {{Chollo::find($chollo -> id) -> user -> name;}}</p>

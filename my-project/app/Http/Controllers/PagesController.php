@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Chollo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,8 @@ class PagesController extends Controller
     }
 
     public function creaChollo() {
-        return view('creaChollo');
+        $categorias = Categoria::all();
+        return view('creaChollo', @compact('categorias'));
     }
 
     public function crear(Request $request) {

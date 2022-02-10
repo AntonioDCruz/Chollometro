@@ -10,7 +10,7 @@ class Chollo extends Model
   public $timestamps=false;
     use HasFactory;
 
-    public function categorias()
+    public function categoria()
     {
         return $this -> belongsToMany(Categoria::class);
     }
