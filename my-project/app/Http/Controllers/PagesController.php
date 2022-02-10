@@ -66,7 +66,7 @@ class PagesController extends Controller
         $cholloNuevo -> puntuacion = $request -> puntuacion;
         $cholloNuevo -> precio = $request -> precio;
         $cholloNuevo -> precio_descuento = $request -> precio_descuento;
-        $cholloNuevo -> disponible = $request -> disponible;
+        $cholloNuevo -> disponible = 1;
         $cholloNuevo -> user_id = $usuario;
         $cholloNuevo -> save();
     

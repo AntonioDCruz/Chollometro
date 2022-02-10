@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chollo extends Model
 {
+  public $timestamps=false;
     use HasFactory;
 
     public function categorias()
     {
         return $this -> belongsToMany(Categoria::class);
     }
-    public function usuario()
+    public function user()
     {
       return $this -> belongsTo(User::class);
     }

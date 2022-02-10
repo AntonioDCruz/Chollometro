@@ -1,3 +1,6 @@
+<?php
+use App\Models\Chollo;
+?>
 @extends('plantillaChollo')
 
 
@@ -20,6 +23,7 @@
                             <p>{{$chollo -> categoria}}</p>
                             <button id="btnIrCholloInicio" onclick="window.location.href='{{$chollo -> url}}'" class="btn btn-primary btn-lg">Ir al chollo</button>
                             <p class="text-truncate text-secondary">{{$chollo -> descripcion}}</p>
+                            <p>Chollo creado por {{Chollo::find($chollo -> id) -> user -> name;}}</p>
         </a>
                             <div class="row justify-content-end">
                                 <button id="btnEditar" onclick="window.location.href='{{ route('editaChollo', $chollo) }}'" class="btn btn-sm mr-3">Editar</button>
