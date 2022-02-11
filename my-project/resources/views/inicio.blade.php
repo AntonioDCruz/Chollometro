@@ -9,6 +9,12 @@ use App\Models\Chollo;
         <div class="alert alert-success">{{ session('mensaje')}}</div>
     @endif
         @foreach ($chollos as $chollo)
+        <?php
+        $chollo2 = Chollo::find( $chollo -> id );
+        echo $chollo2;
+        echo "aaa";
+        echo $chollo2 -> categorias() -> orderBy('nombre') -> get();
+        ?>
         <a class="text-dark text-decoration-none" href="{{ route('vistaChollo', $chollo) }}">
             <div class="mt-4 mb-4 rounded bg-white">
                     <div class="row m-2">
@@ -20,7 +26,6 @@ use App\Models\Chollo;
                             <button  id="btnPuntuacion" class="btn btn-lg mt-2 mb-2" disabled>{{$chollo -> puntuacion}}</button>
                             <h5>{{$chollo -> titulo}}</h5>
                             <span class="text-danger"> <del>{{$chollo -> precio}}</del>€</span>  <span class="text-success">  {{$chollo -> precio_descuento}}€</span>
-                            <p>{{Chollo::find( $chollo -> id ) -> categoria() -> orderBy('nombre') -> get();}}</p>
                             <button id="btnIrCholloInicio" onclick="window.location.href='{{$chollo -> url}}'" class="btn btn-primary btn-lg">Ir al chollo</button>
                             <p class="text-truncate text-secondary">{{$chollo -> descripcion}}</p>
                             <p>Chollo creado por {{Chollo::find($chollo -> id) -> user -> name;}}</p>

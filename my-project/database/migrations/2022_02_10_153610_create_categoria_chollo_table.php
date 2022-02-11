@@ -14,7 +14,9 @@ class CreateCategoriaCholloTable extends Migration
     public function up()
     {
         Schema::create('categoria_chollo', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedInteger('chollo_id');
+            $table->unsignedInteger('categoria_id');
             $table->timestamps();
         });
     }
