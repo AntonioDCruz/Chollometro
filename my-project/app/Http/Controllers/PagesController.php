@@ -54,7 +54,7 @@ class PagesController extends Controller
             'titulo' => 'required',
             'descripcion' => 'required',
             'url' => 'required',
-            'categoria' => 'required',
+            'categorias' => 'required',
             'puntuacion' => 'required',
             'precio' => 'required',
             'precio_descuento' => 'required',
@@ -64,7 +64,7 @@ class PagesController extends Controller
         $cholloNuevo -> titulo = $request -> titulo;
         $cholloNuevo -> descripcion = $request -> descripcion;
         $cholloNuevo -> url = $request -> url;
-        $cholloNuevo -> categoria = $request -> categoria;
+        //$cholloNuevo -> categoria = $request -> categoria;
         $cholloNuevo -> puntuacion = $request -> puntuacion;
         $cholloNuevo -> precio = $request -> precio;
         $cholloNuevo -> precio_descuento = $request -> precio_descuento;
@@ -72,6 +72,10 @@ class PagesController extends Controller
         $cholloNuevo -> user_id = $usuario;
         $cholloNuevo -> save();
     
+
+        foreach($request -> categorias as $categoria){
+            $cholloNuevo -> categorias() -> attach($categoria);
+        }
         return back() -> with('mensaje', 'Chollo agregado exitósamente');
     }
     

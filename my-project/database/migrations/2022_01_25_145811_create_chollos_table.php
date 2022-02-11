@@ -20,7 +20,7 @@ class CreateChollosTable extends Migration
             $table->string("titulo");
             $table->longText("descripcion");
             $table->string("url");
-            $table->integer("categoria");
+            //$table->integer("categoria");
             $table->integer("puntuacion");
             $table->float("precio");
             $table->float("precio_descuento");

@@ -63,7 +63,8 @@
         <input type="text" name="titulo" value="{{ old('titulo') }}" placeholder="Nombre del chollo" class="form-control mb-2" autofocus required >
         <input type="text" name="descripcion" value="{{ old('descripcion') }}" placeholder="Descripción del chollo" class="form-control mb-2" required >
         <input type="url" name="url" value="{{ old('url') }}" placeholder="URL del chollo" class="form-control mb-2" required >
-          <select name="categoria" id="categorias">
+          
+        <select name="categorias[]" id="categorias" multiple>
             @foreach($categorias as $categoria)
               <option value="{{$categoria -> id }}">{{ $categoria -> nombre }}</option>
             @endforeach
