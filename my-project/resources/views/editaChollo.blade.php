@@ -82,13 +82,11 @@
         value="{{ $chollo -> url }}"
     >
 
-    <input
-        type="text"
-        name="categoria"
-        placeholder="Categoría del chollo"
-        class="form-control mb-2"
-        value="{{ $chollo -> categoria }}"
-    >
+    <select name="categorias[]" id="categorias" multiple>
+      @foreach($categorias as $categoria)
+        <option value="{{$categoria -> id }}">{{ $categoria -> nombre }}</option>
+      @endforeach
+    </select>
 
     <input
         type="number"

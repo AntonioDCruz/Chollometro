@@ -92,7 +92,7 @@ class PagesController extends Controller
             'titulo' => 'required',
             'descripcion' => 'required',
             'url' => 'required',
-            'categoria' => 'required',
+            'categorias' => 'required',
             'puntuacion' => 'required',
             'precio' => 'required',
             'precio_descuento' => 'required',
@@ -104,13 +104,19 @@ class PagesController extends Controller
         $cholloActualizar -> titulo = $request -> titulo;
         $cholloActualizar -> descripcion = $request -> descripcion;
         $cholloActualizar -> url = $request -> url;
-        $cholloActualizar -> categoria = $request -> categoria;
+        //$cholloActualizar -> categoria = $request -> categoria;
         $cholloActualizar -> puntuacion = $request -> puntuacion;
         $cholloActualizar -> precio = $request -> precio;
         $cholloActualizar -> precio_descuento = $request -> precio_descuento;
-        $cholloActualizar -> disponible = $request -> disponible;
+        $cholloActualizar -> disponible = 1;
       
         $cholloActualizar -> save();
+
+        foreach($request -> categorias as $categoria){
+            $cholloActualizar -> categorias() -> syncWithPivotValues (
+                [$cholloActualizar -> id] , ['categoria_id' => $categoria] 
+            );
+        }
       
         return back() -> with('mensaje', 'Chollo actualizado');
       }
@@ -122,8 +128,9 @@ class PagesController extends Controller
     }
 
     public function eliminar($id) {
-        $notaEliminar = Chollo::findOrFail($id);
-        $notaEliminar -> delete();
+        $chollo = Chollo::findOrFail($id);
+        $chollo -> categorias() -> detach();
+        $chollo -> delete();
       
         return back() -> with('mensaje', 'Chollo Eliminado');
       }

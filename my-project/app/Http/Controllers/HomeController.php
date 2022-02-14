@@ -31,8 +31,8 @@ class HomeController extends Controller
 
     public function editar($id) {
         $chollo = Chollo::findOrFail($id);
-      
-        return view('editaChollo', @compact('chollo'));
+        $categorias = Categoria::all();
+        return view('editaChollo', @compact('chollo'), @compact('categorias'));
     }
 
     public function creaChollo() {
