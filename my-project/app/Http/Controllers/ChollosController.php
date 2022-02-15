@@ -18,6 +18,19 @@ class ChollosController extends Controller
         return $chollos;
     }
 
+    public function Post(Request $request) {
+        
+        $response = Http::post('http://localhost:8000/api/chollo-severo', [
+            'titulo' => $request -> titulo ,
+            'descripcion' => $request -> descripcion,
+            'url' => $request -> url,
+            'categorias' => 'required',
+            'puntuacion' => $request -> puntuacion,
+            'precio' => $request -> precio,
+            'precio_descuento' => $request -> precio_descuento,
+        ])->collect();
+    }
+
     public function restList() {
         $restChollos = Http::get('http://localhost/api/chollos') -> collect();
 

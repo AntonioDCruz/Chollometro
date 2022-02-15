@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Chollo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class PagesController extends Controller
 {
@@ -46,6 +47,11 @@ class PagesController extends Controller
         return view('creaChollo', @compact('categorias'));
     }
 
+    public function creaApi() {
+        $categorias = Categoria::all();
+        return view('creaApi', @compact('categorias'));
+    }
+
     public function crear(Request $request) {
         $cholloNuevo = new Chollo();
         $usuario = Auth::user()->id;
@@ -76,6 +82,7 @@ class PagesController extends Controller
         foreach($request -> categorias as $categoria){
             $cholloNuevo -> categorias() -> attach($categoria);
         }
+
         return back() -> with('mensaje', 'Chollo agregado exitósamente');
     }
     
@@ -140,4 +147,50 @@ class PagesController extends Controller
       
         return view('vistaChollo', @compact('chollo'));
     }  
+
+
+    /*public function crearApi(Request $request) {
+        $cholloNuevo = new Chollo();
+        $usuario = Auth::user()->id;
+    
+        $request -> validate([
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'url' => 'required',
+            'categorias' => 'required',
+            'puntuacion' => 'required',
+            'precio' => 'required',
+            'precio_descuento' => 'required',
+            //'disponible' => 'required',
+        ]);
+
+        $response = Http::post('http://localhost:8000/api/chollo-severo', [
+            'titulo' => $request -> titulo ,
+            'descripcion' => $request -> descripcion,
+            'url' => $request -> url,
+            'categorias' => 'required',
+            'puntuacion' => $request -> puntuacion,
+            'precio' => $request -> precio,
+            'precio_descuento' => $request -> precio_descuento,
+            'user_id'=> $usuario
+        ]);
+        
+
+        $cholloNuevo -> titulo = $request -> titulo;
+        $cholloNuevo -> descripcion = $request -> descripcion;
+        $cholloNuevo -> url = $request -> url;
+        //$cholloNuevo -> categoria = $request -> categoria;
+        $cholloNuevo -> puntuacion = $request -> puntuacion;
+        $cholloNuevo -> precio = $request -> precio;
+        $cholloNuevo -> precio_descuento = $request -> precio_descuento;
+        $cholloNuevo -> disponible = 1;
+        $cholloNuevo -> user_id = $usuario;
+
+    
+
+        foreach($request -> categorias as $categoria){
+            $cholloNuevo -> categorias() -> attach($categoria);
+        }
+        return back() -> with('mensaje', 'Chollo agregado exitósamente');
+    }*/
 }

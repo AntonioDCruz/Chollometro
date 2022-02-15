@@ -44,3 +44,6 @@ Route::get('vistaChollo/{id}', [ PagesController::class, 'vistaChollo' ])->name(
 
 //Route::get('/', [ PagesController::class, 'chollos' ]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/creaApi', [ PagesController::class, 'creaChollo' ])->name('creaApi');
+Route::post('api', [ PagesController::class, 'crearApi' ]) -> name('api.crear');
