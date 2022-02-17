@@ -12,11 +12,21 @@ class Chollo extends Model
 
     public function categorias()
     {
-        return $this -> belongsToMany(Categoria::class);
+        return $this -> belongsToMany(Categoria::class, 'categoria_chollo');
     }
     
     public function user()
     {
       return $this -> belongsTo(User::class);
+    }
+
+    public function attachCategorias($categorias)
+    {
+      $this -> categorias() -> attach($categorias);
+    }
+
+    public function detachCategorias($categorias)
+    {
+      $this -> categorias() -> detach($categorias);
     }
 }

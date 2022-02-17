@@ -76,12 +76,14 @@ class PagesController extends Controller
         $cholloNuevo -> precio_descuento = $request -> precio_descuento;
         $cholloNuevo -> disponible = 1;
         $cholloNuevo -> user_id = $usuario;
+        $categorias = $request -> categorias;
         $cholloNuevo -> save();
     
 
-        foreach($request -> categorias as $categoria){
+        /*foreach($request -> categorias as $categoria){
             $cholloNuevo -> categorias() -> attach($categoria);
-        }
+        }*/
+        $cholloNuevo -> attachCategorias($categorias);
 
         return back() -> with('mensaje', 'Chollo agregado exitósamente');
     }
@@ -107,7 +109,8 @@ class PagesController extends Controller
         ]);
       
         $cholloActualizar = Chollo::findOrFail($id);
-      
+        $categoriasAll = Categoria::all();
+
         $cholloActualizar -> titulo = $request -> titulo;
         $cholloActualizar -> descripcion = $request -> descripcion;
         $cholloActualizar -> url = $request -> url;
@@ -116,14 +119,18 @@ class PagesController extends Controller
         $cholloActualizar -> precio = $request -> precio;
         $cholloActualizar -> precio_descuento = $request -> precio_descuento;
         $cholloActualizar -> disponible = 1;
-      
+        $categorias = $request -> categorias;
+
         $cholloActualizar -> save();
 
-        foreach($request -> categorias as $categoria){
+        $cholloActualizar -> detachCategorias($categoriasAll);
+        $cholloActualizar -> attachCategorias($categorias);
+
+        /*foreach($request -> categorias as $categoria){
             $cholloActualizar -> categorias() -> syncWithPivotValues (
                 [$cholloActualizar -> id] , ['categoria_id' => $categoria] 
             );
-        }
+        }*/
       
         return back() -> with('mensaje', 'Chollo actualizado');
       }

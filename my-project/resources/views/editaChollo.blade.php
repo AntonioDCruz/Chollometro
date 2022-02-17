@@ -82,11 +82,24 @@
         value="{{ $chollo -> url }}"
     >
 
-    <select name="categorias[]" id="categorias" multiple>
-      @foreach($categorias as $categoria)
-        <option value="{{$categoria -> id }}">{{ $categoria -> nombre }}</option>
-      @endforeach
-    </select>
+    @foreach($categorias as $categoria)
+    <input type="checkbox"
+          name="categorias[]"
+          value="{{ $categoria -> id }}"
+          class="checkbox"
+
+          @foreach ($chollo -> categorias as $cat)
+              {{ $cat -> pivot -> categoria_id }}
+              @if ($categoria -> id === $cat -> pivot -> categoria_id)
+                  checked
+              @endif
+          @endforeach
+    >
+    <label>
+      {{$categoria -> nombre}}
+    </label>
+    @endforeach
+
 
     <input
         type="number"

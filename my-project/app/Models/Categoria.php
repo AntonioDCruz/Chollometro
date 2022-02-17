@@ -11,6 +11,6 @@ class Categoria extends Model
     
     public function chollos()
     {
-        return $this -> belongsToMany(Chollo::class);
+        return $this -> belongsToMany(Chollo::class,'categoria_chollo');
     }
 }
