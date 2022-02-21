@@ -31,14 +31,14 @@ Route::get('/', [ PagesController::class, 'inicio'])->name('inicio');
 Route::get('nuevos', [ PagesController::class, 'nuevos' ])->name('nuevos');
 Route::get('destacados', [ PagesController::class, 'destacados' ])->name('destacados');
 Route::get('creaChollo', [ HomeController::class, 'creaChollo' ])->name('creaChollo');
-Route::post('chollos', [ PagesController::class, 'crear' ]) -> name('chollos.crear');
+Route::post('chollos', [ HomeController::class, 'crear' ]) -> name('chollos.crear');
 
 
 //Route::get('editaChollo/{id}', [ PagesController::class, 'editar' ]) -> name('editaChollo')->middleware('auth');
 Route::get('editaChollo/{id}', [ HomeController::class, 'editar' ]) -> name('editaChollo');
-Route::put('editaChollo/{id}', [ PagesController::class, 'actualizar' ]) -> name('actualizarChollo');
+Route::put('editaChollo/{id}', [ HomeController::class, 'actualizar' ]) -> name('actualizarChollo');
 
-Route::delete('eliminarChollo/{id}', [ PagesController::class, 'eliminar' ]) -> name('eliminarChollo');
+Route::delete('eliminarChollo/{id}', [ HomeController::class, 'eliminar' ]) -> name('eliminarChollo');
 
 Route::get('vistaChollo/{id}', [ PagesController::class, 'vistaChollo' ])->name('vistaChollo');
 

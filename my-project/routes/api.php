@@ -21,5 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/chollos', [ ChollosController::class, 'index' ]);
-
-Route::post('/chollosPost', [ ChollosController::class, 'Post' ]);
+Route::post('/postChollo', [ChollosController::class, 'post']);

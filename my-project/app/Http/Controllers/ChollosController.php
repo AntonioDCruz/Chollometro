@@ -18,17 +18,38 @@ class ChollosController extends Controller
         return $chollos;
     }
 
-    public function Post(Request $request) {
-        
-        $response = Http::post('http://localhost:8000/api/chollo-severo', [
-            'titulo' => $request -> titulo ,
-            'descripcion' => $request -> descripcion,
-            'url' => $request -> url,
+    public function post(Request $request) {
+        $cholloNuevo = new Chollo();
+    
+        $request -> validate([
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'url' => 'required',
             'categorias' => 'required',
-            'puntuacion' => $request -> puntuacion,
-            'precio' => $request -> precio,
-            'precio_descuento' => $request -> precio_descuento,
-        ])->collect();
+            'puntuacion' => 'required',
+            'precio' => 'required',
+            'precio_descuento' => 'required',
+            //'disponible' => 'required',
+        ]);
+
+        $cholloNuevo -> titulo = $request -> titulo;
+        $cholloNuevo -> descripcion = $request -> descripcion;
+        $cholloNuevo -> url = $request -> url;
+        //$cholloNuevo -> categoria = $request -> categoria;
+        $cholloNuevo -> puntuacion = $request -> puntuacion;
+        $cholloNuevo -> precio = $request -> precio;
+        $cholloNuevo -> precio_descuento = $request -> precio_descuento;
+        $cholloNuevo -> disponible = 1;
+        $categorias = $request -> categorias;
+        $cholloNuevo -> save();
+    
+
+        /*foreach($request -> categorias as $categoria){
+            $cholloNuevo -> categorias() -> attach($categoria);
+        }*/
+        $cholloNuevo -> attachCategorias($categorias);
+
+        return back() -> with('mensaje', 'Chollo agregado exitósamente');
     }
 
     public function restList() {
